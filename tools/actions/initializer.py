@@ -65,6 +65,11 @@ def setup_config(args):
     if args.work_path:
         cfg["waydroid"]["work"] = args.work_path # ok
 
+    if args.work_path:
+        args.work = args.work_path
+
+    if not args.work_path:
+        args.work = "/var/lib/waydroid"
 
     has_preinstalled_images = False
     preinstalled_images_paths = tools.config.defaults["preinstalled_images_paths"]

@@ -14,6 +14,8 @@ OR
 
 tools/config/__init__.py arguments
 
+default work_path in arguments.py
+
 waydroid (1.5.4) bullseye; urgency=medium
 
   * shell: Do not abort if classpath env file is missing
