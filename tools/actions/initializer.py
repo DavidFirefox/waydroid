@@ -56,14 +56,14 @@ def setup_config(args):
     print('3') # toujours vrai
 
     if not args.work_path:
-        cfg["waydroid"]["work"] = "/var/lib/waydroid"
+        cfg["waydroid"]["work"] = "/var/lib/waydroid" # ok
     logging.info("1") # toujours vrai
 
     if args.work_path:
-        print('4')
+        print('4') # si arg sortie = 4
 
     if args.work_path:
-        cfg["waydroid"]["work"] = args.work_path
+        cfg["waydroid"]["work"] = args.work_path # ok
 
 
     has_preinstalled_images = False
