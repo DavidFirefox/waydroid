@@ -28,8 +28,8 @@ def main():
         args = helpers.arguments()
         args.cache = {}
 #        args.work = config.defaults["work"]
-        args.work = cfg["waydroid"]["work"] # to test
-#        args.work = args.work_path # to test
+#        args.work = cfg["waydroid"]["work"] # to test -> error
+        args.work = args.work_path # to test
         args.config = args.work + "/waydroid.cfg"
         args.log = args.work + "/waydroid.log"
         args.sudo_timer = True
