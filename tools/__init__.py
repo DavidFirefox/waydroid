@@ -32,7 +32,7 @@ def main():
         args.cache = {}
 #        args.work = config.defaults["work"] # in initializer.py
 #        args.work = config.config_keys["work"] # -> error
-        args.work = tools.config.config_keys[work]
+        args.work = tools.config.config_keys["arch"]
 # or config.config_keys["work"]
 # or tools.config.config_keys["work"]
 #tools.config.defaults ???
