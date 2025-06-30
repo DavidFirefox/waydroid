@@ -15,7 +15,7 @@ import dbus
 import dbus.service
 from gi.repository import GLib
 
-from . import config
+import tools.config
 
 def is_initialized(args):
     return os.path.isfile(args.config) and os.path.isdir(tools.config.defaults["rootfs"])
