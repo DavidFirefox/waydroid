@@ -14,6 +14,9 @@ from . import config
 from . import helpers
 from .helpers import logging as tools_logging
 
+import tools.config
+import configparser
+
 
 def main():
     def actionNeedRoot(action):
