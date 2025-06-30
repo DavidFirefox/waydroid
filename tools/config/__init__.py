@@ -3,18 +3,6 @@
 import os
 import pwd
 
-import logging
-from tools import helpers
-import tools.config
-
-import sys
-import threading
-import multiprocessing
-import select
-import queue
-import time
-import dbus
-import dbus.service
 #
 # Exported functions
 #
@@ -43,7 +31,7 @@ config_keys = ["arch",
 # overridden on the commandline)
 defaults = {
     "arch": "arm64",
-#    "work": "/var/lib/waydroid",
+    "work": "/var/lib/waydroid",
     "vendor_type": "MAINLINE",
     "system_datetime": "0",
     "vendor_datetime": "0",
@@ -57,11 +45,11 @@ defaults = {
     "container_xdg_runtime_dir": "/run/xdg",
     "container_wayland_display": "wayland-0",
 }
-    if args.work_path:
-        defaults["work"] = args.work_path
+#    if args.work_path:
+#        defaults["work"] = args.work_path
 
-    if not args.work_path:
-        defaults["work"] = "/var/lib/waydroid"
+#    if not args.work_path:
+#        defaults["work"] = "/var/lib/waydroid"
 
 defaults["images_path"] = defaults["work"] + "/images"
 defaults["rootfs"] = defaults["work"] + "/rootfs"
