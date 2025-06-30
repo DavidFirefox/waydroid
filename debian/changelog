@@ -1,3 +1,17 @@
+waydroid (1.5.4.1) bullseye; urgency=low
+  * Test to make working directory as variable, and than can be modify on config file
+  * config: Add "work" (default : "/var/lib/waydroid") in config_keys, so working directory (image file is link to this directory) is in config file (waydroid.cfg)
+  * lxc stay hard coded : keep /var/lib/waydroid/rootfs and /var/lib/waydroid/lxc/
+  * to do : Try to replace  /var/lib/waydroid by args.work or variable in waydroid/data/scripts/waydroid-net.sh & data/configs/config_base & data/configs/config_1 & data/configs/config_3
+   "config_path": "/usr/share/waydroid-extra/channels.cfg",
+session_defaults["waydroid_data"] = session_defaults["xdg_data_home"] + \
+    "/waydroid/data"	
+
+So you can :
+1 : keep /var/lib/waydroid/waydroid.cfg file and put your waydroid directory in "work"
+OR
+2 : use "-W" or "--work_path" as argument, with the waydroid directory (default = /var/lib/waydroid/)
+
 waydroid (1.5.4) bullseye; urgency=medium
 
   * shell: Do not abort if classpath env file is missing
