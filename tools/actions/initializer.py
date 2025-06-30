@@ -65,6 +65,7 @@ def setup_config(args):
     if args.work_path:
         cfg["waydroid"]["work"] = args.work_path # ok
 
+# not use ?
     if args.work_path:
         args.work = args.work_path
 
