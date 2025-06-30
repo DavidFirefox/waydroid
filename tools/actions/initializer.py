@@ -47,23 +47,17 @@ def setup_config(args):
     cfg["waydroid"]["hwbinder"] = args.HWBINDER_DRIVER
 
     if not args.work_path:
-        logging.info("2")
-    logging.info("3") # si arg sortie = 3
+        logging.info("2") # si pas arg sortie = 2
+    logging.info("3") # toujours vrai
 
     if not args.work_path:
-        print('2')
-    print('3') # si arg sortie = 3
+        print('2') # si pas arg sortie = 2
+    print('3') # toujours vrai
 
     if not args.work_path:
-        cfg["waydroid"]["work"] = defaults["work"]
-    logging.info("1") # si arg sortie = 1
-    if not args.work_path:
-        logging.info("2")
-    logging.info("3") # si arg sortie = 3
+        cfg["waydroid"]["work"] = config.defaults["work"]
+    logging.info("1")
 
-    if not args.work_path:
-        print('2')
-    print('3') # si arg sortie = 3
 
     has_preinstalled_images = False
     preinstalled_images_paths = tools.config.defaults["preinstalled_images_paths"]
