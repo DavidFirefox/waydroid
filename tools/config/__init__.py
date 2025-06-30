@@ -3,6 +3,8 @@
 import os
 import pwd
 
+import tools.config
+
 #
 # Exported functions
 #
