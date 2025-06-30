@@ -15,7 +15,6 @@ import dbus
 import dbus.service
 from gi.repository import GLib
 
-import tools.config
 
 def is_initialized(args):
     return os.path.isfile(args.config) and os.path.isdir(tools.config.defaults["rootfs"])
@@ -57,7 +56,7 @@ def setup_config(args):
     print('3') # toujours vrai
 
     if not args.work_path:
-        cfg["waydroid"]["work"] = config.defaults["work"]
+        cfg["waydroid"]["work"] = "/var/lib/waydroid"
     logging.info("1")
 
 
