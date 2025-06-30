@@ -32,9 +32,10 @@ def main():
         args.cache = {}
 #        args.work = config.defaults["work"] # in initializer.py
 #        args.work = config.config_keys["work"] # -> error
-        args.work = tools.config.config_keys["work"]
+        args.work = tools.config.config_keys[work]
 # or config.config_keys["work"]
 # or tools.config.config_keys["work"]
+#tools.config.defaults ???
 #        args.work = cfg["waydroid"]["work"] # to test -> error
 #        args.work = args.work_path # to test -> error
         args.config = args.work + "/waydroid.cfg"
