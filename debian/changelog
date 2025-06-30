@@ -12,6 +12,8 @@ So you can :
 OR
 2 : use "-W" or "--work_path" as argument, with the waydroid directory (default = /var/lib/waydroid/)
 
+tools/config/__init__.py arguments
+
 waydroid (1.5.4) bullseye; urgency=medium
 
   * shell: Do not abort if classpath env file is missing
