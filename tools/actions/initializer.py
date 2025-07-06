@@ -47,30 +47,32 @@ def setup_config(args):
     cfg["waydroid"]["vndbinder"] = args.VNDBINDER_DRIVER
     cfg["waydroid"]["hwbinder"] = args.HWBINDER_DRIVER
 
-    if not args.work_path:
-        logging.info("2") # si pas arg sortie = 2
-    logging.info("3") # toujours vrai
+    logging.info("tools/actions/inistializer.py")
+    print("args.work BEFORE:\t" + args.work)
+    print("cfg[waydroid][work] BEFORE:\t" + cfg["waydroid"]["work"])
 
     if not args.work_path:
-        print('2') # si pas arg sortie = 2
-    print('3') # toujours vrai
-
-    if not args.work_path:
+        logging.info("NOT Work_path")
         cfg["waydroid"]["work"] = "/var/lib/waydroid" # ok
-    logging.info("1") # toujours vrai
-
-    if args.work_path:
-        print('4') # si arg sortie = 4
-
-    if args.work_path:
-        cfg["waydroid"]["work"] = args.work_path # ok
-
-# not use ?
-    if args.work_path:
-        args.work = args.work_path
-
-    if not args.work_path:
         args.work = "/var/lib/waydroid"
+##        print("config.defaults[work]:\t" + config.defaults["work"])# HS on recuperer pas config probablement
+        print("args.work:\t" + args.work)
+#        defaults["work"] = "/var/lib/waydroid"
+
+    if args.work_path:
+        print('Work_path')
+        print("--work_path:\t" + args.work_path)
+        cfg["waydroid"]["work"] = args.work_path # ok
+        print("test")
+##        print("config.defaults[work]:\t" + config.defaults["work"]) # HS on recuperer pas config probablement
+        print("args.work_path:\t" + args.work_path)
+        print("cfg[waydroid][work]:\t" + cfg["waydroid"]["work"])
+        # not use ?
+        print("test2")
+
+        args.work = args.work_path
+        print("args.work:\t" + args.work)
+#        defaults["work"] = args.work_path
 
     has_preinstalled_images = False
     preinstalled_images_paths = tools.config.defaults["preinstalled_images_paths"]
@@ -84,7 +86,10 @@ def setup_config(args):
                 logging.warning("Found directory {} but missing system or vendor image, ignoring...".format(preinstalled_images))
 
     if not args.images_path:
-        args.images_path = tools.config.defaults["images_path"]
+        if args.work_path:
+            args.images_path = args.work_path + "/images" ###################################### AVVVV
+        else:
+            args.images_path = tools.config.defaults["images_path"]
     cfg["waydroid"]["images_path"] = args.images_path
 
     if has_preinstalled_images:

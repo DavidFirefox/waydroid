@@ -29,10 +29,43 @@ def main():
     try:
         # Parse arguments, set up logging
         args = helpers.arguments()
+
+
+#def arguments_init(subparser):
+#    ret = subparser.add_parser("init", help="set up waydroid specific"
+#                               " configs and install images")
+#    ret.add_argument("-i", "--images_path",
+#                        help="custom path to waydroid images (default in"
+#                             " /var/lib/waydroid/images) or custom_waydroid_path/images")
+#    ret.add_argument("-f", "--force", action="store_true",
+#                     help="re-initialize configs and images")
+#    ret.add_argument("-c", "--system_channel",
+#                     help="custom system channel (options: OTA channel URL; default is Official OTA server)")
+#    ret.add_argument("-v", "--vendor_channel",
+#                     help="custom vendor channel (options: OTA channel URL; default is Official OTA server)")
+#    ret.add_argument("-r", "--rom_type",
+#                     help="rom type (options: \"lineage\", \"bliss\" or OTA channel URL; default is LineageOS)")
+#    ret.add_argument("-s", "--system_type",
+#                     help="system type (options: VANILLA, FOSS or GAPPS; default is VANILLA)")
+#    ret.add_argument("-W", "--work_path",
+#                        help="custom work path to waydroid (the waydroid folder) (default in"
+#                             " /var/lib/waydroid/)")
+#    return ret
+
+        print("--work_path:\t" + args.work_path)
+
+
+
         args.cache = {}
 #        args.work = config.defaults["work"] # in initializer.py
 #        args.work = config.config_keys["work"] # -> error
-        args.work = tools.config.config_keys["arch"]
+        args.work = cfg["waydroid"].get("work")
+        print("config.defaults[work]:\t" + config.defaults["work"])
+
+#        args.work = args.images_path
+#        print(args.images_path)
+#        args.work = config.defaults["work"]
+#tools.config.config_keys["arch"]
 # or config.config_keys["work"]
 # or tools.config.config_keys["work"]
 #tools.config.defaults ???

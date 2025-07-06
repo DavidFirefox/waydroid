@@ -47,6 +47,8 @@ def start(args):
         helpers.images.replace(args, system_zip, system_time,
                                vendor_zip, vendor_time)
         args.session["background_start"] = "false"
+        print("args.images_path(hardware_manager.p)y:\t" + args.images_path)
+        logging.info("args.images_path(hardware_manager.p)y:\t" + args.images_path)
         helpers.images.mount_rootfs(args, args.images_path, args.session)
         helpers.protocol.set_aidl_version(args)
         helpers.lxc.start(args)

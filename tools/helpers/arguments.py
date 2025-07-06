@@ -33,9 +33,9 @@ def arguments_init(subparser):
                      help="rom type (options: \"lineage\", \"bliss\" or OTA channel URL; default is LineageOS)")
     ret.add_argument("-s", "--system_type",
                      help="system type (options: VANILLA, FOSS or GAPPS; default is VANILLA)")
-    ret.add_argument("-W", "--work_path",
-                        help="custom work path to waydroid (the waydroid folder) (default in"
-                             " /var/lib/waydroid/)")
+#    ret.add_argument("-W", "--work_path",
+#                        help="custom work path to waydroid (the waydroid folder) (default in"
+#                             " /var/lib/waydroid/)")
     return ret
 
 def arguments_status(subparser):
@@ -139,6 +139,9 @@ def arguments():
     # Other
     parser.add_argument("-V", "--version", action="version",
                         version=tools.config.version)
+    parser.add_argument("-W", "--work_path",
+                        help="custom work path to waydroid (the waydroid folder) (default in"
+                             " /var/lib/waydroid/)")
 
     # Logging
     parser.add_argument("-l", "--log", dest="log", default=None,

@@ -3,6 +3,9 @@
 import os
 import pwd
 
+# solution 1 :
+import argparse
+
 #
 # Exported functions
 #
@@ -25,6 +28,25 @@ config_keys = ["arch",
                "suspend_action",
                "mount_overlays",
                "auto_adb"]
+
+# solution 1 :
+# create parser
+#parser = argparse.ArgumentParser()
+
+# add arguments to the parser
+#parser.add_argument("language")
+#parser.add_argument("name")
+
+# parse the arguments
+#args = parser.parse_args()
+
+# get the arguments value
+#if args.language == 'Python':
+#    print("I love Python too")
+#else:
+#    print("Learn Python, you will like it")
+
+#print(f'Hello {args.name}, this was a simple introduction to argparse module')
 
 # Config file/commandline default values
 # $WORK gets replaced with the actual value for args.work (which may be

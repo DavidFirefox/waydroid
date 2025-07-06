@@ -119,6 +119,8 @@ def remove_overlay(args):
         shutil.rmtree(tools.config.defaults["overlay_work"])
 
 def make_prop(args, cfg, full_props_path):
+    print("args.work:(helpers/images.py):\t" + args.work)
+    logging.info("args.work(helpers/images.py):\t" + args.work)
     if not os.path.isfile(args.work + "/waydroid_base.prop"):
         raise RuntimeError("waydroid_base.prop Not found")
     with open(args.work + "/waydroid_base.prop") as f:
@@ -156,6 +158,13 @@ def mount_rootfs(args, images_dir, session):
     cfg = tools.config.load(args)
     helpers.mount.mount(args, images_dir + "/system.img",
                         tools.config.defaults["rootfs"], umount=True)
+
+    print("images_dir(helpers/images.py):\t" + images_dir)
+    logging.info("images_dir(helpers/images.py):\t" + images_dir)
+#    print("cfg(helpers/images.py):\t" + cfg)
+#    logging.info("cfg(helpers/images.py):\t" + cfg)
+#    print("tools.config.load(args)(helpers/images.py):\t" + tools.config.load(args))
+#    logging.info("tools.config.load(args)(helpers/images.py):\t" + tools.config.load(args))
     if cfg["waydroid"]["mount_overlays"] == "True":
         try:
             helpers.mount.mount_overlay(args, [tools.config.defaults["overlay"],

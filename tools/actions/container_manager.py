@@ -188,7 +188,10 @@ def do_start(args, session):
 
     helpers.lxc.start(args)
     services.hardware_manager.start(args)
-
+    print("cfg[waydroid][images_path](actions/container_manager.py):" + cfg["waydroid"]["images_path"])
+##    print("tools.config.load(args):(actions/container_manager.py):\t" + tools.config.load(args))
+##    logging.info("tools.config.load(args):(actions/container_manager.py):\t" + tools.config.load(args))
+    # logging.info("cfg[waydroid][images_path](actions/container_manager.py):" + cfg["waydroid"]["images_path"])
     args.session = session
 
 def stop(args, quit_session=True):
