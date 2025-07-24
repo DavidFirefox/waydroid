@@ -19,13 +19,13 @@ on Android 11.
 
 Our documentation site can be found at [docs.waydro.id](https://docs.waydro.id)
 
-## Documentation - MODIFICATION
+## Documentation - MODIFICATIONS / UPDATE
 
-Waydroid could work as before if it have no new parameters. So it could work with GUI application as before.
+Waydroid could work as before if it have no new parameters. So it could work with GUI application as before.  
 
-You can choose the profile data folder "waydroid_data" (default = ~/.local/share/waydroid). You have to use --data_path during the init for example :  sudo waydroid init --data_path /home/user/waydroid_data
+You can choose the profile data folder "waydroid_data" (default = ~/.local/share/waydroid). You have to use --data_path during the init for example :  sudo waydroid init --data_path /home/user/waydroid_data  
 
-You can choose the work folder "work" (default = /var/lib/waydroid). You have to ALWAYS use --work_path so for example : (var/lib/waydroid2 is the folder)
+You can choose the work folder "work" (default = /var/lib/waydroid). You have to ALWAYS use --work_path so for example : (var/lib/waydroid2 is the folder)  
 - Init : sudo waydroid --work_path /var/lib/waydroid2 init
 - Init WITH other profile data folder : sudo waydroid --work_path /var/lib/waydroid2 init --data_path /home/user/waydroid_data
 - Log : waydroid --work_path /var/lib/waydroid2 log
@@ -33,19 +33,29 @@ You can choose the work folder "work" (default = /var/lib/waydroid). You have to
 - Session start : waydroid --work_path /var/lib/waydroid2 session start
 - Show-full-ui : waydroid --work_path /var/lib/waydroid2 show-full-ui
 
-It remain to look if network works, if not have a look to usr/lib/waydroid/data/scripts/waydroid-net.sh -> Because we just have one now (no one by profile) and it have : vnic=$(awk "\$1 == \"$net_link_key\" {print \$3}" /var/lib/waydroid/lxc/waydroid/config)
+It remain to look if network works, if not have a look to usr/lib/waydroid/data/scripts/waydroid-net.sh -> Because we just have one now (no one by profile) and it have :   
+vnic=$(awk "\$1 == \"$net_link_key\" {print \$3}" /var/lib/waydroid/lxc/waydroid/config)
 
-You have to manually edit /etc/systemd/system/multi-user.target.wants/waydroid-container.service and replace the : ExecStart=/usr/bin/waydroid -w container start BY ExecStart=/usr/bin/waydroid -w --work_path /var/lib/waydroid2 container start
-Before modify it, stop the previous session, the container and the service.
-Modify it
-Reload : sudo systemctl daemon-reload
-Start the service and the container, if it stay waydroid connection error, reboot.
+You have to manually edit /etc/systemd/system/multi-user.target.wants/waydroid-container.service and replace the :   
+ExecStart=/usr/bin/waydroid -w container start  
+BY  
+ExecStart=/usr/bin/waydroid -w --work_path /var/lib/waydroid2 container start  
+Before modify it, stop the previous session, the container and the service.  
+Modify it  
+Reload : sudo systemctl daemon-reload  
+Start the service and the container, if it stay waydroid connection error, reboot.  
 
-It will be update to a profile number with a service by profile. If any one have idea please contact me !
+It will be update to a profile number with a service by profile. If any one have idea please contact me !  
 
 ## Reporting bugs
 
 If you have found an issue with Waydroid, please [file a bug](https://github.com/Waydroid/waydroid/issues/new/choose).
+
+## Testing
+I test it on a Droidian arm64 phone, and all works !  
+Could other test it ?  
+Could anyone test it on Ubuntu Touch ? on desktop ?  
+-> Please repport your results  
 
 ## Get in Touch
 
