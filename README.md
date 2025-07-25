@@ -57,14 +57,15 @@ If you have found an issue with Waydroid, please [file a bug](https://github.com
 I test it on a Droidian arm64 phone, and all works !  
 Could other test it ?  
 Could anyone test it on Ubuntu Touch ? on desktop ?  
--> Please repport your results  
+-> Please repport your results here https://github.com/DavidFirefox/waydroid/discussions/2  
 
 I keep lot of log and print for testing and for the next option !  
 
 ## Get in Touch
 
 If you want to get in contact with the developers please feel free to join the
-*Waydroid* groups in [Matrix](https://matrix.to/#/#waydroid:matrix.org) or [Telegram](https://t.me/WayDroid).
+*Waydroid* groups in [Matrix](https://matrix.to/#/#waydroid:matrix.org) or [Telegram](https://t.me/WayDroid).  
+Or for this fork : https://github.com/DavidFirefox/waydroid/discussions/3
 
 ## Build / Install
 
@@ -81,4 +82,5 @@ I think it could be fine, if we use a profile number instead of a work-path.
 With a common cfg file, with the work-path of all profiles.  
 So GUI software could be adapted to use multi-profiles.  
 
-Maybe try to see if more than one container could be start as the same time ? Multiple Waydroid instance.
+Maybe try to see if more than one container could be start as the same time ? Multiple Waydroid instance.  
+You could see https://github.com/DavidFirefox/waydroid/discussions/3
