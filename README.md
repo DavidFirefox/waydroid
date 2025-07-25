@@ -44,6 +44,7 @@ Before modify it, stop the previous session, the container and the service.
 Modify it  
 Reload : sudo systemctl daemon-reload  
 Start the service and the container, if it stay waydroid connection error, reboot.  
+So this could be scripted, and need each time you change profile. It is boring now, but will be modify and upgraded !!  
 
 It will be update to a profile number with a service by profile. If any one have idea please contact me !  
 
