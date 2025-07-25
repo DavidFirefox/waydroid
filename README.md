@@ -52,12 +52,32 @@ It will be update to a profile number with a service by profile. If any one have
 If you have found an issue with Waydroid, please [file a bug](https://github.com/Waydroid/waydroid/issues/new/choose).
 
 ## Testing
+
 I test it on a Droidian arm64 phone, and all works !  
 Could other test it ?  
 Could anyone test it on Ubuntu Touch ? on desktop ?  
 -> Please repport your results  
 
+I keep lot of log and print for testing and for the next option !  
+
 ## Get in Touch
 
 If you want to get in contact with the developers please feel free to join the
 *Waydroid* groups in [Matrix](https://matrix.to/#/#waydroid:matrix.org) or [Telegram](https://t.me/WayDroid).
+
+## Build / Install
+
+I build the waydroid_1.5.4.1_all.deb on my Droidian arm64 phone, but it should be use by all arch.  
+You just have to dpkg it.  
+Try if you could download needed version of libgbinder and libglibutil required for Waydroid > 1.5.  
+You cloud take it from my Release and download on a new folder and sudo dpkg -i *.deb  
+
+You could build it with the build_waydroid_v8.sh, adapt to just build waydroid, and take it from my git. Dependence are visible on the script but not install, you could uncomment it.
+
+## What NEXT ?
+
+I think it could be fine, if we use a profile number instead of a work-path.
+With a common cfg file, with the work-path of all profiles.  
+So GUI software could be adapted to use multi-profiles.  
+
+Maybe try to see if more than one container could be start as the same time ? Multiple Waydroid instance.
