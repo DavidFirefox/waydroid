@@ -1,20 +1,22 @@
 waydroid (1.5.4.1) bullseye; urgency=low
-  * Test to make working directory as variable, and than can be modify on config file
-  * config: Add "work" (default : "/var/lib/waydroid") in config_keys, so working directory (image file is link to this directory) is in config file (waydroid.cfg)
-  * lxc stay hard coded : keep /var/lib/waydroid/rootfs and /var/lib/waydroid/lxc/
-  * to do : Try to replace  /var/lib/waydroid by args.work or variable in waydroid/data/scripts/waydroid-net.sh & data/configs/config_base & data/configs/config_1 & data/configs/config_3
+  * Test to make working directory as variable, and than can be modify on config file and use multiple profiles
+  * config: Add "work" (default : "/var/lib/waydroid") in config_keys, so working directory (image file is link to this directory by default) is in config file (waydroid.cfg)
+  * lxc is modify to be in the work directory ("work_path")
+  * session data directory (profile data folder) call "data_path" could be defined during the init (and store in waydroid.cfg) (defaut is ~/.local/share/waydroid)
+  * It totally work as before if we don't use the new parameter, so the GUI software are still usable.
+  * to do : Try to replace  /var/lib/waydroid by args.work or variable in waydroid/data/scripts/waydroid-net.sh -> need to be copy on each installation work path
    "config_path": "/usr/share/waydroid-extra/channels.cfg",
-session_defaults["waydroid_data"] = session_defaults["xdg_data_home"] + \
-    "/waydroid/data"	
+
 
 So you can :
-1 : keep /var/lib/waydroid/waydroid.cfg file and put your waydroid directory in "work"
-OR
-2 : use "-W" or "--work_path" as argument, with the waydroid directory (default = /var/lib/waydroid/)
+1 : use "-W" or "--work_path" as argument, with the waydroid directory (default = /var/lib/waydroid/)
+2 : use "--data_path" as argument, during the init, with the waydroid data session directory (default = ~/.local/share/waydroid)
 
 tools/config/__init__.py arguments
 
 default work_path in arguments.py
+
+ -- DavidFirefox  Fri, 25 Jul 2025 16:09:15 +0200
 
 waydroid (1.5.4) bullseye; urgency=medium
 
