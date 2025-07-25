@@ -17,12 +17,12 @@ fi
 
 echo
 echo -e "${GREEN}==> Updating repository ...${NC}"
-sudo apt update || exit 1
+#sudo apt update || exit 1
 echo -e "${GREEN}==> Updating repository, done.${NC}\n"
 echo -e "${GREEN}==> Installing build tools packages ...${NC}"
-sudo apt install -y \
-  build-essential cdbs devscripts equivs fakeroot \
-  git git-buildpackage git-lfs || exit 1
+#sudo apt install -y \
+#  build-essential cdbs devscripts equivs fakeroot \
+#  git git-buildpackage git-lfs || exit 1
 echo -e "${GREEN}==> Installing build tools packages, done.${NC}\n"
 
 echo -e "${GREEN}==> Setting up build_changelog command ...${NC}"
@@ -36,11 +36,12 @@ mkdir -p ~/waydroid-build/packages
 cd ${_%/*}
 echo -e "${GREEN}==> Setting up build directory, done${NC}\n"
 
+#repos=(
+#  "https://github.com/sailfishos/libglibutil.git"
+#  "https://github.com/mer-hybris/libgbinder.git"
+#  "https://github.com/waydroid/gbinder-python.git"
 repos=(
-  "https://github.com/sailfishos/libglibutil.git"
-  "https://github.com/mer-hybris/libgbinder.git"
-  "https://github.com/waydroid/gbinder-python.git"
-  "https://github.com/waydroid/waydroid.git"
+  "https://github.com/DavidFirefox/waydroid.git"
 )
 
 for i in ${repos[@]}
@@ -80,21 +81,21 @@ do
     cd ~/waydroid-build
     echo -e "${GREEN}==========> Start installing ${i} <==========${NC}"
     echo -e "${GREEN}==> Installing package(s): ${i} ...${NC}"
-    sudo dpkg -i *.deb
+  #  sudo dpkg -i *.deb
     if [ ! $? -eq 0 ]
     then
       echo -e "${RED}==> Installing ${i}, error.${NC}"
       echo -e "${GREEN}==> Trying to fix it ...${NC}"
-      sudo apt install -f -y || exit 1
+    #  sudo apt install -f -y || exit 1
       echo -e "${GREEN}==> Fixed.${NC}"
     fi
     echo -e "${GREEN}==> Installing ${i}, success.${NC}"
     echo -e "${GREEN}==> Installing package(s): ${i}, done.${NC}"
     echo -e "${GREEN}==========> Finish installing ${i} <==========${NC}\n"
 
-    mv *.deb packages 2> /dev/null
-    mv *.ddeb packages 2> /dev/null
-    sudo rm -rf ${i}
+  #  mv *.deb packages 2> /dev/null
+  #  mv *.ddeb packages 2> /dev/null
+  #  sudo rm -rf ${i}
   fi
 done
 
@@ -102,4 +103,4 @@ echo -e "${GREEN}==> Successfully build and installing all packages${NC}"
 echo -e "${GREEN}==> Packages archive saved in $(realpath ~)/waydroid-build/packages/${NC}"
 ls -1 ~/waydroid-build/packages/
 echo
-sudo rm -f ~/waydroid-build/*.*  /usr/bin/build_changelog 2> /dev/null
+# sudo rm -f ~/waydroid-build/*.*  /usr/bin/build_changelog 2> /dev/null
