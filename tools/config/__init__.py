@@ -4,8 +4,10 @@ import os
 import pwd
 
 # solution 1 :
-import argparse
+#import argparse
 
+#import tools.config
+#import configparser
 #
 # Exported functions
 #
@@ -21,6 +23,7 @@ tools_src = os.path.normpath(os.path.realpath(__file__) + "/../../..")
 # Keys saved in the config file (mostly what we ask in 'waydroid init')
 config_keys = ["arch",
                "work",
+               "data_path",
                "images_path",
                "vendor_type",
                "system_datetime",
@@ -29,31 +32,13 @@ config_keys = ["arch",
                "mount_overlays",
                "auto_adb"]
 
-# solution 1 :
-# create parser
-#parser = argparse.ArgumentParser()
-
-# add arguments to the parser
-#parser.add_argument("language")
-#parser.add_argument("name")
-
-# parse the arguments
-#args = parser.parse_args()
-
-# get the arguments value
-#if args.language == 'Python':
-#    print("I love Python too")
-#else:
-#    print("Learn Python, you will like it")
-
-#print(f'Hello {args.name}, this was a simple introduction to argparse module')
-
 # Config file/commandline default values
 # $WORK gets replaced with the actual value for args.work (which may be
 # overridden on the commandline)
 defaults = {
     "arch": "arm64",
     "work": "/var/lib/waydroid",
+##    "data_path": "0",
     "vendor_type": "MAINLINE",
     "system_datetime": "0",
     "vendor_datetime": "0",
@@ -72,6 +57,15 @@ defaults = {
 
 #    if not args.work_path:
 #        defaults["work"] = "/var/lib/waydroid"
+print("Phase 2 : other directory - tools/config/__init__.py")
+#if args.work_path:
+#        print("defaults[work]:\t" + defaults["work"])
+#        defaults["work"] = args.work_path
+
+#if not args.work_path:
+#        print("args.work_path:\t" + args.work_path)
+#        defaults["work"] = "/var/lib/waydroid"
+
 
 defaults["images_path"] = defaults["work"] + "/images"
 defaults["rootfs"] = defaults["work"] + "/rootfs"

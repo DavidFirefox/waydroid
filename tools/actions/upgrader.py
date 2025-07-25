@@ -14,6 +14,7 @@ def get_config(args):
     args.system_ota = cfg["waydroid"]["system_ota"]
     args.vendor_ota = cfg["waydroid"]["vendor_ota"]
     args.session = None
+    print("get_config - tools/actions/upgrader.py")
 
 def migration(args):
     try:

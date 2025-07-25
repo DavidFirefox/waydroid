@@ -11,6 +11,9 @@ from tools.interfaces import IPlatform
 stopping = False
 
 def start(args, session, unlocked_cb=None):
+##    cfg = tools.config.load(args)
+    print("session[waydroid_data] BEFORE:(tools/service/user_manager.py):\t" + session["waydroid_data"])
+##    print("cfg[waydroid][data_path]:(tools/service/user_manager.py):\t" + cfg["waydroid"]["data_path"])
     waydroid_data = session["waydroid_data"]
     apps_dir = session["xdg_data_home"] + "/applications/"
 

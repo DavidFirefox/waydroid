@@ -29,6 +29,22 @@ def load(args):
     if "properties" not in cfg:
         cfg["properties"] = {}
     # no default values for property override
+#    if args.data_path:
+#    args.data_path = cfg["waydroid"]["data_path"]
+###    print("session[waydroid_data] BEFORE:(tools/config/load.py):\t" + session["waydroid_data"])
+
+
+##### SHOULD WORK WITHOUT
+#    if not args.action == "init":
+#        args.data_path = cfg["waydroid"].get("data_path")
+###        session["waydroid_data"] = args.data_path # a faire dans init -> fait
+#        print("NOT INIT:(tools/config/load.py):\t")
+
+#    print("--data_path:(tools/config/load.py):\t" + args.data_path)
+###    print("session[waydroid_data] AFTER:(tools/config/load.py):\t" + session["waydroid_data"])
+
+
+
 
     return cfg
 

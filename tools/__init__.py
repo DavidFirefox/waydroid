@@ -1,6 +1,4 @@
-# Copyright 2021 Oliver Smith
-# SPDX-License-Identifier: GPL-3.0-or-later
-# PYTHON_ARGCOMPLETE_OK
+# Copyright 2021 Oliver Smith SPDX-License-Identifier: GPL-3.0-or-later PYTHON_ARGCOMPLETE_OK
 import sys
 import logging
 import os
@@ -15,7 +13,15 @@ from . import helpers
 from .helpers import logging as tools_logging
 
 import tools.config
-import configparser
+from tools import helpers
+from tools import services
+##from tools import helpers
+##import tools.config
+
+#import configparser
+
+#import tools.helpers.props
+
 
 
 def main():
@@ -30,51 +36,162 @@ def main():
         # Parse arguments, set up logging
         args = helpers.arguments()
 
+##        if args.action == "log":
 
-#def arguments_init(subparser):
-#    ret = subparser.add_parser("init", help="set up waydroid specific"
-#                               " configs and install images")
-#    ret.add_argument("-i", "--images_path",
-#                        help="custom path to waydroid images (default in"
-#                             " /var/lib/waydroid/images) or custom_waydroid_path/images")
-#    ret.add_argument("-f", "--force", action="store_true",
-#                     help="re-initialize configs and images")
-#    ret.add_argument("-c", "--system_channel",
-#                     help="custom system channel (options: OTA channel URL; default is Official OTA server)")
-#    ret.add_argument("-v", "--vendor_channel",
-#                     help="custom vendor channel (options: OTA channel URL; default is Official OTA server)")
-#    ret.add_argument("-r", "--rom_type",
-#                     help="rom type (options: \"lineage\", \"bliss\" or OTA channel URL; default is LineageOS)")
-#    ret.add_argument("-s", "--system_type",
-#                     help="system type (options: VANILLA, FOSS or GAPPS; default is VANILLA)")
-#    ret.add_argument("-W", "--work_path",
-#                        help="custom work path to waydroid (the waydroid folder) (default in"
-#                             " /var/lib/waydroid/)")
-#    return ret
-
-        print("--work_path:\t" + args.work_path)
+####################### AV bloquant si pas args.work
+##        if 1 == 1:
+##            print("--work_path:(tools/__init__.py):\t" + args.work_path)
+#            args.work = config.defaults["work"] ##### AV pour le non init et non lancement
+##            args.work = args.work_path
+##            print("args.work:(tools/__init__.py):\t" + args.work)
 
 
+        if 1 == 1:
+##        if args.action == "init":
+#        if 'args.work_path' in locals():
+            if args.work_path:
+                 print("--work_path:(tools/__init__.py):\t" + args.work_path)
+                 args.work = args.work_path
+            else:
+                 args.work = config.defaults["work"]
+                 print("NOT WORK PATH (tools/__init__.py")
+#        if 'args.images_path' in locals():
 
+        print("args.work suite:(tools/__init__.py):\t" + args.work)
+        if args.action == "init":
+            if not args.images_path: # OK en mode init et ko en mode log
+                 print("NOT IMAGE PATH (tools/__init__.py")
+            if args.images_path:
+                 print("--images_path:(tools/__init__.py):\t" + args.images_path) # crash if not images_path # ok
+
+
+######### AV :
+#defaults["rootfs"] = defaults["work"] + "/rootfs"
+#defaults["overlay"] = defaults["work"] + "/overlay"
+#defaults["overlay_rw"] = defaults["work"] + "/overlay_rw"
+#defaults["overlay_work"] = defaults["work"] + "/overlay_work"
+#defaults["data"] = defaults["work"] + "/data"
+#defaults["lxc"] = defaults["work"] + "/lxc" ## AV hard defined !!
+#defaults["host_perms"] = defaults["work"] + "/host-permissions"
+
+
+
+#        try:
+#             args.images_path
+#        except NameError:
+#             print("--images_path 2:(tools/__init__.py):\t" + args.images_path)
+#        else:
+#             print("NOT IMAGE PATH 2 (tools/__init__.py")
+
+
+####        cfg = tools.config.load(args)
+##        cfg = configparser.ConfigParser()
+###        cfg = tools.config.load(args)
+        if args.action == "init":
+            if args.data_path:
+                 print("--data_path:(tools/__init__.py):\t" + args.data_path)
+#                 cfg["waydroid"]["data_path"] = args.data_path
+            else:
+#                 cfg["waydroid"]["data_path"] = config.session_defaults["waydroid_data"]
+                 print("NOT DATA PATH (tools/__init__.py")
+##
+###        config_path = tools.config.defaults["data_path"]
+        config_path = tools.config.channels_defaults["config_path"]
+
+###        cfg = tools.config.load(args)
+###        print("cfg[waydroid][data_path] (tools/__init__.py):\t" + cfg["waydroid"].get("data_path"))
+
+        print("exit if init - tools/__init_.py")
+#        cfg = tools.config.load(args)
+#        print("Vendor type:\t" + cfg["waydroid"]["vendor_type"])
         args.cache = {}
-#        args.work = config.defaults["work"] # in initializer.py
-#        args.work = config.config_keys["work"] # -> error
-        args.work = cfg["waydroid"].get("work")
-        print("config.defaults[work]:\t" + config.defaults["work"])
+##        args.work = config.defaults["work"] # in initializer.py
 
-#        args.work = args.images_path
-#        print(args.images_path)
+#        try:
+#             args.work_path
+#        except NameError:
+#            args.work = args.work_path
+#        else:
+#            args.work = config.defaults["work"]
+
+#        if 'args.work_path' in globals(): #locals():
+#            args.work = args.work_path
+#        else:
+#            args.work = config.defaults["work"]
+
+####        config.session_defaults["waydroid_data"] = cfg["waydroid"]["data_path"]
+        print("config.session_defaults[waydroid_data] (tools/__init__.py):\t" + config.session_defaults["waydroid_data"])
+
+        print("--args.work:(tools/__init__.py):\t" + args.work)
+
+        print("config.defaults[work]:(tools/__init__.py):\t" + config.defaults["work"])
+
+##        print("tools.config.load(args):(tools/__init__.py):\t" + tools.config.load(args))
+###        print("args.images_path:(tools/__init__.py):\t" + args.images_path)
+###        print("cfg[waydroid][images_path]:(tools/__init__.py):\t" + cfg["waydroid"]["images_path"])
+###        print("tools.config.defaults[images_path]:\t" + tools.config.defaults[images_path])
+
+#        args.work = config.config_keys["work"] # -> error
+#        args.work = tools.config.config_keys["arch2"]
+##        args.work = args.images_path
+##        print(args.images_path)
 #        args.work = config.defaults["work"]
-#tools.config.config_keys["arch"]
+#        args.work = cfg["waydroid"].get("work")
 # or config.config_keys["work"]
 # or tools.config.config_keys["work"]
 #tools.config.defaults ???
 #        args.work = cfg["waydroid"]["work"] # to test -> error
 #        args.work = args.work_path # to test -> error
         args.config = args.work + "/waydroid.cfg"
+        print("args.config:(tools/__init__.py):\t" + args.config)
+
+        if args.work_path:
+        # or tools.config.defaults
+            config.defaults["rootfs"] = args.work + "/rootfs"
+            config.defaults["overlay"] = args.work + "/overlay"
+            config.defaults["overlay_rw"] = args.work + "/overlay_rw"
+            config.defaults["overlay_work"] = args.work + "/overlay_work"
+            config.defaults["data"] = args.work + "/data"
+            config.defaults["lxc"] = args.work + "/lxc"
+            config.defaults["host_perms"] = args.work + "/host-permissions"
+            tools.config.defaults["rootfs"] = args.work + "/rootfs"
+
+
+            print("config.defaults[rootfs]:(tools/__init__.py):\t" + config.defaults["rootfs"])
+            print("config.defaults[overlay]:(tools/__init__.py):\t" + config.defaults["overlay"])
+            print("config.defaults[overlay_rw]:(tools/__init__.py):\t" + config.defaults["overlay_rw"])
+            print("config.defaults[overlay_work]:(tools/__init__.py):\t" + config.defaults["overlay_work"])
+            print("config.defaults[data]:(tools/__init__.py):\t" + config.defaults["data"])
+            print("config.defaults[lxc]:(tools/__init__.py):\t" + config.defaults["lxc"])
+            print("config.defaults[host_perms]:(tools/__init__.py):\t" + config.defaults["host_perms"])
+
+            print("tools.config.defaults[rootfs]:(tools/__init__.py):\t" + tools.config.defaults["rootfs"])
+
+
         args.log = args.work + "/waydroid.log"
         args.sudo_timer = True
         args.timeout = 1800
+
+
+        cfg = tools.config.load(args)
+#### PLANTE
+##        print("cfg[waydroid][data_path] (tools/__init__.py):\t" + cfg["waydroid"].get("data_path"))
+##        print("cfg[waydroid][data_path] (tools/__init__.py):\t" + cfg["waydroid"].get("arch"))
+##        print("tools.config.config_keys (tools/__init__.py):\t" + tools.config.config_keys["arch"])
+
+        print("TEST(tools/__init__.py):\t" + cfg["waydroid"]["suspend_action"])
+        print("tools.config.session_defaults[waydroid_data] BEFORE :(tools/__init__.py):\t" + tools.config.session_defaults["waydroid_data"])
+        if "data_path" in cfg["waydroid"]:
+            print("TEST2 : data_path in cfg Waydroid (tools/__init__.py):\t" + cfg["waydroid"]["data_path"])
+            print("data_path is detected in cfg Waydroid (tools/__init__.py):\t")
+#            print("tools.config.session_defaults[waydroid_data] BEFORE :(tools/__init__.py):\t" + tools.config.session_defaults["waydroid_data"])
+#        if not args.action == "init":
+            config.session_defaults["waydroid_data"] = cfg["waydroid"]["data_path"]
+            args.data_path = cfg["waydroid"]["data_path"]
+        print("tools.config.session_defaults[waydroid_data] AFTER :(tools/__init__.py):\t" + tools.config.session_defaults["waydroid_data"])
+
+## A FAIRE : session["xdg_data_home"] pour     apps_dir = session["xdg_data_home"] + "/applications/" (user_manager.py)
+
 
         if os.geteuid() == 0:
             if not os.path.exists(args.work):

@@ -177,6 +177,81 @@ def set_lxc_config(args):
     # Create empty file
     open(os.path.join(lxc_path, "config_session"), mode="w").close()
 
+    # Modify config to have multiprofil
+    # Config
+    # Spécifiez le chemin du fichier
+    chemin_fichier = lxc_path + "/config"
+    print("chemin_fichier :(tools/helpers/lxc.py):\t" + chemin_fichier)
+
+    # Texte à remplacer et nouveau texte
+    texte_a_remplacer1 = "/var/lib/waydroid/rootfs"
+    nouveau_texte1 = args.work + "/rootfs"
+    # CAN BE UPDATE TO : config.defaults[rootfs]
+
+    texte_a_remplacer2 = "/var/lib/waydroid/lxc/waydroid/config_nodes"
+    nouveau_texte2 = lxc_path + "/config_nodes"
+
+    texte_a_remplacer3 = "/var/lib/waydroid/lxc/waydroid/config_session"
+    nouveau_texte3 = lxc_path + "/config_session"
+
+    texte_a_remplacer4 = "/var/lib/waydroid/lxc/waydroid/waydroid.seccomp"
+    nouveau_texte4 = lxc_path + "/waydroid.seccomp"
+
+
+    # Lire le contenu du fichier
+    with open(chemin_fichier, 'r', encoding='utf-8') as fichier:
+        contenu = fichier.read()
+
+    # Remplacer le texte
+    contenu_modifie = contenu.replace(texte_a_remplacer1, nouveau_texte1)
+
+
+    # Écrire le nouveau contenu dans le fichier
+    with open(chemin_fichier, 'w', encoding='utf-8') as fichier:
+        fichier.write(contenu_modifie)
+
+
+    # 2 :
+    # Lire le contenu du fichier
+    with open(chemin_fichier, 'r', encoding='utf-8') as fichier:
+        contenu = fichier.read()
+
+    contenu_modifie = contenu.replace(texte_a_remplacer2, nouveau_texte2)
+
+    # Écrire le nouveau contenu dans le fichier
+    with open(chemin_fichier, 'w', encoding='utf-8') as fichier:
+        fichier.write(contenu_modifie)
+
+    # 3 :
+    # Lire le contenu du fichier
+    with open(chemin_fichier, 'r', encoding='utf-8') as fichier:
+        contenu = fichier.read()
+
+    contenu_modifie = contenu.replace(texte_a_remplacer3, nouveau_texte3)
+
+    # Écrire le nouveau contenu dans le fichier
+    with open(chemin_fichier, 'w', encoding='utf-8') as fichier:
+        fichier.write(contenu_modifie)
+
+
+    # 4 :
+    # Lire le contenu du fichier
+    with open(chemin_fichier, 'r', encoding='utf-8') as fichier:
+        contenu = fichier.read()
+
+    contenu_modifie = contenu.replace(texte_a_remplacer4, nouveau_texte4)
+
+    # Écrire le nouveau contenu dans le fichier
+    with open(chemin_fichier, 'w', encoding='utf-8') as fichier:
+        fichier.write(contenu_modifie)
+
+
+
+    print("Le texte a été remplacé avec succès.")
+
+
+
+
 def generate_session_lxc_config(args, session):
     nodes = []
     def make_entry(src, dist=None, mnt_type="none", options="rbind,create=file 0 0"):
@@ -214,6 +289,8 @@ def generate_session_lxc_config(args, session):
     config_nodes.close()
     command = ["mv", config_nodes_tmp_path, lxc_path]
     tools.helpers.run.user(args, command)
+
+
 
 def make_base_props(args):
     def find_hal(hardware):

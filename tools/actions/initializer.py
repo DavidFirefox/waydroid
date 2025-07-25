@@ -52,27 +52,36 @@ def setup_config(args):
     print("cfg[waydroid][work] BEFORE:\t" + cfg["waydroid"]["work"])
 
     if not args.work_path:
-        logging.info("NOT Work_path")
+        logging.info("NOT Work_path (tools/actions/initializer.py)")
         cfg["waydroid"]["work"] = "/var/lib/waydroid" # ok
         args.work = "/var/lib/waydroid"
 ##        print("config.defaults[work]:\t" + config.defaults["work"])# HS on recuperer pas config probablement
-        print("args.work:\t" + args.work)
+        print("args.work (tools/actions/initializer.py) :\t" + args.work)
 #        defaults["work"] = "/var/lib/waydroid"
 
     if args.work_path:
-        print('Work_path')
-        print("--work_path:\t" + args.work_path)
+        print('Work_path (tools/actions/initializer.py)')
+        print("--work_path (tools/actions/initializer.py):\t" + args.work_path)
         cfg["waydroid"]["work"] = args.work_path # ok
-        print("test")
+        print("test (tools/actions/initializer.py)")
 ##        print("config.defaults[work]:\t" + config.defaults["work"]) # HS on recuperer pas config probablement
-        print("args.work_path:\t" + args.work_path)
-        print("cfg[waydroid][work]:\t" + cfg["waydroid"]["work"])
+        print("args.work_path (tools/actions/initializer.py):\t" + args.work_path)
+        print("cfg[waydroid][work] (tools/actions/initializer.py):\t" + cfg["waydroid"]["work"])
         # not use ?
-        print("test2")
+        print("test2 (tools/actions/initializer.py)")
 
         args.work = args.work_path
-        print("args.work:\t" + args.work)
+        print("args.work (tools/actions/initializer.py):\t" + args.work)
 #        defaults["work"] = args.work_path
+
+    if args.data_path:
+        print("--data_path:(tools/actions/initializer.py):\t" + args.data_path)
+        cfg["waydroid"]["data_path"] = args.data_path
+        print("cfg[waydroid][data_path];(tools/actions/initializer.py):\t" + cfg["waydroid"]["data_path"])
+    else:
+###        cfg["waydroid"]["data_path"] = tools.config.session_defaults["waydroid_data"]  # /root/.local/share/waydroid/data # because init is with root !
+        print("NOT DATA PATH (tools/action/initializer.py")
+
 
     has_preinstalled_images = False
     preinstalled_images_paths = tools.config.defaults["preinstalled_images_paths"]
