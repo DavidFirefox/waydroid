@@ -24,7 +24,7 @@ echo -e "${GREEN}==> Setting up build directory, done${NC}\n"
   git clone https://github.com/DavidFirefox/waydroid.git || exit 1 
   echo -e "${GREEN}==> Cloning git repository, done.${NC}\n"
 
-  cd ~/waydroid-build/packages/waydroid
+  cd ~/waydroid-build/waydroid
   echo -e "${GREEN}==========> Start building <==========${NC}"
   echo -e "${GREEN}==> Building package(s) ...${NC}"
   sudo debuild -b -uc -us
