@@ -26,9 +26,9 @@ echo -e "${GREEN}==> Installing build tools packages ...${NC}"
 echo -e "${GREEN}==> Installing build tools packages, done.${NC}\n"
 
 echo -e "${GREEN}==> Setting up build_changelog command ...${NC}"
-sudo curl https://raw.githubusercontent.com/MrCyjaneK/waydroid-build/main/build_changelog \
+#sudo curl https://raw.githubusercontent.com/MrCyjaneK/waydroid-build/main/build_changelog \
   -o /usr/bin/build_changelog || exit 1
-sudo chmod +x ${_} || exit 1
+#sudo chmod +x ${_} || exit 1
 echo -e "${GREEN}==> Setting up build_changelog command, done${NC}\n"
 
 echo -e "${GREEN}==> Setting up build directory ...${NC}"
@@ -58,12 +58,12 @@ do
   echo 12 > debian/compat
   if [ ! -f debian/changelog ]; then
     echo -e "${GREEN}==> Building changelog ${i} ...${NC}"
-    build_changelog $(git tag -l --sort=authordate | sed 's/[a-z/]//g' | uniq | tail -n1) || exit 1
+#    build_changelog $(git tag -l --sort=authordate | sed 's/[a-z/]//g' | uniq | tail -n1) || exit 1
     echo -e "${GREEN}==> Building changelog ${i}, done.${NC}\n"
   fi
 
   echo -e "${GREEN}==> Installing build dependencies for ${i} ...${NC}"
-  sudo mk-build-deps -ir -t "apt -o Debug::pkgProblemResolver=yes -y --no-install-recommends" || exit 1
+#  sudo mk-build-deps -ir -t "apt -o Debug::pkgProblemResolver=yes -y --no-install-recommends" || exit 1
   echo -e "${GREEN}==> Installing build dependencies for ${i}, done.${NC}"
   echo -e "${GREEN}==========> Finish preparing ${i} <==========${NC}\n"
 
