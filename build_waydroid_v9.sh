@@ -20,6 +20,8 @@ echo -e "${GREEN}==> Setting up build directory, done${NC}\n"
 
   echo -e "${GREEN}==========> Start preparing <==========${NC}"
   echo -e "${GREEN}==> Cloning git repository ...${NC}"
+  echo -e "${GREEN} ==> If directory waydroid exist please use : 'sudo rm -rf waydroid' and start script again"
+
   mv waydroid waydroid.old
   git clone https://github.com/DavidFirefox/waydroid.git || exit 1 
   echo -e "${GREEN}==> Cloning git repository, done.${NC}\n"
@@ -35,3 +37,5 @@ echo -e "${GREEN}==> Setting up build directory, done${NC}\n"
   else
     echo -e "${GREEN}==> Building package(s), done.${NC}"
     echo -e "${GREEN}==========> Finish building <==========${NC}\n"
+  fi
+echo
