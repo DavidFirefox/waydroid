@@ -74,7 +74,7 @@ You just have to dpkg it.
 Try if you could download needed version of libgbinder and libglibutil required for Waydroid > 1.5.  
 You cloud take it from my Release and download on a new folder and sudo dpkg -i *.deb  
 
-You could build it with the build_waydroid_v8.sh, adapt to just build waydroid, and take it from my git. Dependence are visible on the script but not install, you could uncomment it.
+You could build it with the build_waydroid_v9.sh, adapt to just build waydroid, and take it from my git. Dependence are visible on the script but not install, you could uncomment it.
 
 ## What NEXT ?
 
